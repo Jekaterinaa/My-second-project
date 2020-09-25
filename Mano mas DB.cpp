@@ -1,6 +1,3 @@
-﻿// Mano mas DB.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -16,8 +13,7 @@ const int max_size = 10;
 
 struct duomuo {
     string vard, pav;
-    int egz, num, paz[max_size];
-    float vid = 0, gp, med;
+    float vid = 0, gp, med, paz[max_size], egz;
 };
 
 void insertionSort(int mas[], int n) {
@@ -45,23 +41,25 @@ float mediana(int mas[], int n) {
 
 int main()
 {
-    duomuo eil_mas[5];
-    int k, paz, l;
-    cout << "Iveskite 0, jeigu norite ivesti pazymius (ir 0, kai baigete ivedineti pazymius). 1 - jeigu norite, kad jie butu atsitiktinai generuojami";
-    cin >> l;
-    for (int j = 0; j < 5; j++) {
+    int k, paz, l, stud;
+    cout << "Iveskite studentu skaiciu\n";
+    cin >> stud;
+    duomuo* eil_mas = new duomuo[stud];
+    for (int j = 0; j < stud; j++) {
         cout << "Iveskite studento duomenis (vardas, pavarde):\n";
         cin >> eil_mas[j].vard >> eil_mas[j].pav;
+        cout << "Iveskite 0, jeigu norite ivesti pazymius (ir 0, kai baigete ivedineti pazymius). 1 - jeigu norite, kad jie butu atsitiktinai generuojami.\n";
+        cin >> l;
         if (l == 0) {
             cin >> eil_mas[j].egz;
             do {
                 cin >> paz;
                 if (paz == 0)
                     break;
-                eil_mas[j].paz[eil_mas[j].num] = paz;
+                eil_mas[j].paz[num] = paz;
                 eil_mas[j].vid = eil_mas[j].vid + (float)paz;
-                eil_mas[j].num++;
-            } while (eil_mas[j].num < max_size);
+                num++;
+            } while (num < max_size);
         }
         else if (l == 1) {
             eil_mas[j].egz = (rand() % 10) + 5;
@@ -104,14 +102,3 @@ int main()
         cout << "Jus ivedete neteisinga skaiciu, negalima apskaiciuoti GP";
     }
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
