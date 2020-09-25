@@ -1,6 +1,3 @@
-// Mano mas DB.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -18,12 +15,12 @@ const int max_size = 10;
 
 struct duomuo {
     string vard, pav;
-    vector<int> paz;
-    int num, nd, egz;
-    float vid = 0, gp, med;
+    vector<float> paz;
+    int num, nd;
+    float vid = 0, gp, med, egz;
 };
 
-float mediana(vector<int> v) {
+float mediana(vector<float> v) {
     if (v.size() % 2 == 0)
         return (v[v.size() / 2] + v[v.size() / 2 - 1]) / 2.0;
     else
@@ -32,13 +29,16 @@ float mediana(vector<int> v) {
 
 int main()
 {
-    duomuo eil_mas[5];
-    int k, paz, l;
-    cout << "Iveskite 0, jeigu norite ivesti pazymius (ir 0, kai baigete ivedineti pazymius). 1 - jeigu norite, kad jie butu atsitiktinai generuojami.\n";
-    cin >> l;
-    for (int j = 0; j < 5; j++) {
+    int k, l, stud;
+    float paz;
+    cout << "Iveskite studentu skaiciu\n";
+    cin >> stud;
+    duomuo* eil_mas = new duomuo[stud];
+    for (int j = 0; j < stud; j++) {
         cout << "Iveskite studento duomenis (vardas, pavarde):\n";
         cin >> eil_mas[j].vard >> eil_mas[j].pav;
+        cout << "Iveskite 0, jeigu norite ivesti pazymius (ir 0, kai baigete ivedineti pazymius). 1 - jeigu norite, kad jie butu atsitiktinai generuojami.\n";
+        cin >> l;
         if (l == 0) {
             cin >> eil_mas[j].egz;
             do {
@@ -46,7 +46,7 @@ int main()
                 if (paz == 0)
                     break;
                 eil_mas[j].paz.push_back(paz);
-                eil_mas[j].vid = eil_mas[j].vid + (float)paz;
+                eil_mas[j].vid = eil_mas[j].vid + paz;
                 eil_mas[j].num++;
             } while (eil_mas[j].num < max_size);
         }
@@ -56,21 +56,21 @@ int main()
             for (int i = 0; i < eil_mas[j].num; i++) {
                 paz = (rand() % 10) + 1;
                 eil_mas[j].paz.push_back(paz);
-                eil_mas[j].vid = eil_mas[j].vid + (float)paz;
+                eil_mas[j].vid = eil_mas[j].vid + paz;
             }
         }
         else {
             cout << "Jus ivedete neteisinga skaiciu";
         }
     }
-    
+
     cout << "Iveskite 0, jeigu norite skaiciuoti GP su vidurkiu. 1 - jeigu norite skaiciuoti su mediana." << endl;
     cin >> k;
 
     if (k == 0) {
         cout << "Vardas      " << "Pavarde       " << "Galutinis(vid.)" << endl;
         cout << "-------------------------------------------------" << endl;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < stud; i++) {
             eil_mas[i].vid = eil_mas[i].vid / (float)eil_mas[i].num;
             eil_mas[i].gp = eil_mas[i].vid * 0.4 + eil_mas[i].egz * 0.6;
             cout << std::left << std::setw(12) << eil_mas[i].vard << std::left << std::setw(14) << eil_mas[i].pav;
@@ -80,7 +80,7 @@ int main()
     else if (k == 1) {
         cout << "Vardas      " << "Pavarde       " << "Galutinis(med.)" << endl;
         cout << "-------------------------------------------------" << endl;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < stud; i++) {
             sort(eil_mas[i].paz.begin(), eil_mas[i].paz.end());
             eil_mas[i].med = mediana(eil_mas[i].paz);
             eil_mas[i].gp = eil_mas[i].med * 0.4 + eil_mas[i].egz * 0.6;
@@ -91,14 +91,3 @@ int main()
     else
         cout << "Jus ivedete neteisinga skaiciu, negalima apskaiciuoti GP";
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
