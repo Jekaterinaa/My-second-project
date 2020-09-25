@@ -17,7 +17,7 @@ struct duomuo {
     int num;
 };
 
-void insertionSort(int mas[], int n) {
+void insertionSort(float mas[], int n) {
     int i, j, elem;
 
     for (i = 1; i < n; i++) {
@@ -33,7 +33,7 @@ void insertionSort(int mas[], int n) {
     }
 }
 
-float mediana(int mas[], int n) {
+float mediana(float mas[], int n) {
     if (n % 2 == 0)
         return (mas[n / 2] + mas[n / 2 - 1]) / 2.0;
     else
@@ -61,8 +61,9 @@ int main()
                     break;
                 eil_mas[j].paz[n] = paz;
                 eil_mas[j].vid = eil_mas[j].vid + paz;
-                num++;
-            } while (num < max_size);
+                n++;
+            } while (n < max_size);
+            eil_mas[j].num = n;
         }
         else if (l == 1) {
             eil_mas[j].egz = (rand() % 10) + 5;
@@ -97,7 +98,7 @@ int main()
             insertionSort(eil_mas[i].paz, eil_mas[i].num);
             eil_mas[i].med = mediana(eil_mas[i].paz, eil_mas[i].num);
             eil_mas[i].gp = eil_mas[i].med * 0.4 + eil_mas[i].egz * 0.6;
-            cout << std::left << std::setw(12) << eil_mas[i].vard << std:: left << std::setw(14) << eil_mas[i].pav;
+            cout << std::left << std::setw(12) << eil_mas[i].vard << std::left << std::setw(14) << eil_mas[i].pav;
             cout << std::left << std::setw(5) << std::setprecision(3) << eil_mas[i].gp << endl;
         }
     }
