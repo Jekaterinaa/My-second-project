@@ -16,12 +16,12 @@ const int max_size = 10;
 
 struct duomuo {
     string vard, pav;
-    vector<int> paz;
+    vector<float> paz;
     int num = 0, nd, egz;
     float vid = 0, gp, med;
 };
 
-float mediana(vector<int> v) {
+float mediana(vector<float> v) {
     if (v.size() % 2 == 0)
         return (v[v.size() / 2] + v[v.size() / 2 - 1]) / 2.0;
     else
@@ -44,7 +44,8 @@ void rusiuoti(duomuo sar[], int n) {
 int main()
 {
     duomuo eil_mas[10];
-    int k, paz, l, gp;
+    int k, l, gp, kiek;
+    float paz;
 
     cout << "Iveskite 0, jeigu norite nuskaityti duomenis is failo arba 1, jeigu norite ivesti juos.\n";
     cin >> k;
@@ -58,7 +59,9 @@ int main()
             exit(1);
         }
 
-        for (int i = 0; i < 6 && !duomenys.eof(); i++) {
+        duomenys >> kiek;
+
+        for (int i = 0; i < kiek && !duomenys.eof(); i++) {
             duomenys >> eil_mas[i].vard >> eil_mas[i].pav;
             for (int j = 0; j < 5; j++) {
                 duomenys >> paz;
@@ -72,7 +75,7 @@ int main()
     else if (k == 1) {
         cout << "Iveskite 0, jeigu norite ivesti pazymius (ir 0, kai baigete ivedineti pazymius). 1 - jeigu norite, kad jie butu atsitiktinai generuojami.\n";
         cin >> l;
-        for (int j = 0; j < 6; j++) {
+        for (int j = 0; j < kiek; j++) {
             cout << "Iveskite studento duomenis (vardas, pavarde):\n";
             cin >> eil_mas[j].vard >> eil_mas[j].pav;
             if (l == 0) {
@@ -106,7 +109,7 @@ int main()
         return 0;
     }
 
-    rusiuoti(eil_mas, 6);
+    rusiuoti(eil_mas, kiek);
     
     cout << "Iveskite 0, jeigu norite skaiciuoti GP su vidurkiu. 1 - jeigu norite skaiciuoti su mediana." << endl;
     cin >> gp;
@@ -114,7 +117,7 @@ int main()
     if (gp == 0) {
         cout << "Vardas      " << "Pavarde       " << "Galutinis(vid.)" << endl;
         cout << "-------------------------------------------------" << endl;
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < kiek; i++) {
             eil_mas[i].vid = eil_mas[i].vid / (float)eil_mas[i].num;
             eil_mas[i].gp = eil_mas[i].vid * 0.4 + eil_mas[i].egz * 0.6;
             cout << std::left << std::setw(12) << eil_mas[i].vard << std::left << std::setw(14) << eil_mas[i].pav;
@@ -124,7 +127,7 @@ int main()
     else if (gp == 1) {
         cout << "Vardas      " << "Pavarde       " << "Galutinis(med.)" << endl;
         cout << "-------------------------------------------------" << endl;
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < kiek; i++) {
             sort(eil_mas[i].paz.begin(), eil_mas[i].paz.end());
             eil_mas[i].med = mediana(eil_mas[i].paz);
             eil_mas[i].gp = eil_mas[i].med * 0.4 + eil_mas[i].egz * 0.6;
