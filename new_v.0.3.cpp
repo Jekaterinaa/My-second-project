@@ -9,7 +9,7 @@
 int main()
 {
     vector<duomuo> eil_mas;
-    int k, l, gp, kiek;
+    int k, l, gp;
     float paz;
     duomuo temp;
 
@@ -29,6 +29,7 @@ int main()
     }
     catch (int e) {
         cout << "Jus ivedete neteisinga skaiciu.\n";
+        exit(1);
     }
 
     eil_mas = rusiuoti(eil_mas);
