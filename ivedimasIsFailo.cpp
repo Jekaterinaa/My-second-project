@@ -28,7 +28,7 @@ vector<duomuo> ivedimasIsFailo() {
     }
     catch (int e) {
         cout << "Neteisingas failo pavadinimas.\n";
-       
+       exit(1);
     }
     
     return eil_mas;
