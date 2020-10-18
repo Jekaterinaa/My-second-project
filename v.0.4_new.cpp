@@ -4,7 +4,6 @@
 #include "duomenuGeneravimas.h"
 #include "duomenuNuskaitymas.h"
 #include "isvedimasIFaila.h"
-//#include "dalijimas.h"
 
 int main()
 {
