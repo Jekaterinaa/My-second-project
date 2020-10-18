@@ -4,7 +4,6 @@
 #include "duomenuGeneravimas.h"
 
 skaicius duomenuGeneravimas() {
-    //int kiek, kiek_paz;
     skaicius sk;
 
     std::mt19937 mt(1729);
