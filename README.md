@@ -1,5 +1,5 @@
 # Versija V0.5
-Penktos versijos testavimas (su list'u) ir jos palyginimas su ketvirta versija (su vektoriumi).
+Penktos versijos testavimas (su list'u) ir jos palyginimas su ketvirta versija (su vektoriumi). <br/>
 **Testavimo sistemos parametrai :** <br/>
 CPU: i5-7200U 2.70 GHz <br/>
 RAM: 8.00 GB <br/>
