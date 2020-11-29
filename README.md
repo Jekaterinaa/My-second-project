@@ -11,3 +11,5 @@ HDD: 237.00 GB <br/>
 |10000              |0.201508 s                        |0.151721 s                       |
 |100000             |1.71521 s                         |0.156334 s                       |
 |1000000            |18.7877 s                         |1.5931 s                         |
+**Išvados :** <br/>
+Realizacijoje su vektoriumi (kaip ir realizacijoje su list'u) geriau veikia antra strategija. Programoje sukuriamas failas su studentų ir jų pažymių skaičiumi, kuriuos įveda vartotojas. Duomenys iš jo nuskaitomi ir įrašomi į duomenų struktūros "duomuo" vektorių. Studentai rūšiuojami, naudojant antrą strategiją - studentai, kurių galutinis pažymys žemesnis negu 5 balai įrašomas į naują vektorių - "vargšiukai", o iš seno ištrinamas. O tie, kurųi galutinia pažymiai yra aukštesni negu 5 balai lieka sename vektoriuje. Pabaigoje sukuriami du nauji failai - protingų ir kvailų studentų, kur išvedami vardai, pavardės ir galutiniai pažymiai. 
